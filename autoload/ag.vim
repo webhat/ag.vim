@@ -64,24 +64,24 @@ function! ag#Ag(cmd, args)
   redraw!
 
   if l:apply_mappings
-    exec "nnoremap <silent> <buffer> e <CR><C-W><C-W>:ccl<CR>"
-    exec "nnoremap <silent> <buffer> q :ccl<CR>"
-    exec "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
-    exec "nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
-    exec "nnoremap <silent> <buffer> o <CR>"
-    exec "nnoremap <silent> <buffer> go <CR><C-W><C-W>"
-    exec "nnoremap <silent> <buffer> h <C-W><CR><C-W>K"
-    exec "nnoremap <silent> <buffer> H <C-W><CR><C-W>K<C-W>b"
-    exec "nnoremap <silent> <buffer> v <C-W><CR><C-W>H<C-W>b<C-W>J<C-W>t"
+    nnoremap <silent> <buffer> e  <CR><C-w><C-w>:cclose<CR>
+    nnoremap <silent> <buffer> go <CR><C-w><C-w>
+    nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
+    nnoremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
+    nnoremap <silent> <buffer> o  <CR>
+    nnoremap <silent> <buffer> q  :cclose<CR>
+    nnoremap <silent> <buffer> t  <C-w><CR><C-w>T
+    nnoremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
+    nnoremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
-    exec "nnoremap <silent> <buffer> gv <C-w><cr><C-w>H<C-w>b<C-w>J80<C-w>-5<C-w>+"
+    nnoremap <silent> <buffer> gv <C-w><CR><C-w>H<C-w>b<C-w>J80<C-w>-5<C-w>+
     " Interpretation:
-    " ^w<cr>  jump to quickfix under cursor (this is a default quickfix window binding)
-    " ^wH  slam the new window to the left wall
-    " ^wb  go to the bottom-right window, which is the quickfix window
-    " ^wJ  slam it to the floor
-    " 80^w-  Decrease this window by (at most) 80 lines.
-    " 5^w+  Undecrease the quickfix window by 5, so you can see what you're doing
+    " ^W<cr> Jump to quickfix under cursor (this is a default quickfix window binding)
+    " ^WH    Slam the new window to the left wall
+    " ^Wb    Go to the bottom-right window, which is the quickfix window
+    " ^WJ    Slam it to the floor
+    " 80^W-  Decrease this window by (at most) 80 lines.
+    " 5^W+   Increase the quickfix window by 5 lines, so you can see what you're doing
 
     " TODO: j  Now you probably want to do something on the next line
 
@@ -98,7 +98,7 @@ endfunction
 
 function! ag#GetDocLocations()
   let dp = ''
-  for p in split(&rtp,',')
+  for p in split(&runtimepath,',')
     let p = p.'/doc/'
     if isdirectory(p)
       let dp = p.'*.txt '.dp
