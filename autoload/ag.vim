@@ -64,6 +64,7 @@ function! ag#Ag(cmd, args)
   redraw!
 
   if l:apply_mappings
+    exec "nnoremap <silent> <buffer> e <CR><C-W><C-W>:ccl<CR>"
     exec "nnoremap <silent> <buffer> q :ccl<CR>"
     exec "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
     exec "nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
@@ -84,7 +85,7 @@ function! ag#Ag(cmd, args)
 
     " TODO: j  Now you probably want to do something on the next line
 
-    echom "ag.vim keys: q=quit <cr>/t/h/v=enter/tab/split/vsplit go/T/H/gv=preview versions of same"
+    echom "ag.vim keys: q=quit <cr>/e/t/h/v=enter/edit/tab/split/vsplit go/T/H/gv=preview versions of same"
   endif
 endfunction
 

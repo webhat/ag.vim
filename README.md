@@ -55,6 +55,7 @@ Sometimes `git grep` is even faster, though in my experience it's not noticably 
 
 In the quickfix window, you can use:
 
+    e    to open file and close the quickfix window
     o    to open (same as enter)
     go   to preview file (open but maintain focus on ag.vim results)
     t    to open in new tab
